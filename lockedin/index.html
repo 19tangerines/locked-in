@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div data-theme="light" style="min-height:100vh;background:var(--color-bg);color:var(--color-text);transition:background .2s ease,color .2s ease">
+<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:clamp(16px,5vw,40px)">
+    <div style="width:100%;max-width:400px;background:var(--color-surface);border:2px solid var(--color-divider);padding:40px 36px 36px">
+      <div style="font-family:var(--font-heading);font-weight:800;font-size:30px;letter-spacing:-.02em">locked<span style="color:var(--color-accent)">.in</span></div>
+      <div class="text-muted" style="font-size:14px;margin-top:2px">keep each other moving</div>
+
+      <div class="seg" style="width:100%;margin-top:26px">
+        <label class="seg-opt" style="flex:1;justify-content:flex-start"><input type="radio" name="authmode" checked>Log in</label>
+        <label class="seg-opt" style="flex:1;justify-content:flex-start"><input type="radio" name="authmode">Sign up</label>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px;margin-top:22px">
+        <div class="field"><label>email</label><input class="input" placeholder="you@email.com"></div>
+        <div class="field"><label>password</label><input class="input" type="password" placeholder="••••••••"></div>
+        <div style="margin-top:-4px"><a href="forgotpassword.html" style="font-size:12.5px;font-weight:600">Forgot your password?</a></div>
+        <button class="btn btn-primary btn-block kbtn" onclick="location.href='onboard.html'">Enter</button>
+
+        <div class="err"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>Incorrect email or password. Please try again.</div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px;margin:20px 0;color:var(--color-neutral-500)">
+        <div style="flex:1;height:1px;background:var(--color-divider)"></div><span style="font-size:12px">or</span><div style="flex:1;height:1px;background:var(--color-divider)"></div>
+      </div>
+      <button class="btn btn-secondary btn-block" onclick="location.href='dashboard.html'">Continue with Google</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js">
+</script>
+
+</body>
+</html>

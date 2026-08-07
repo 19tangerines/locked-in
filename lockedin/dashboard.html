@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div data-theme="light" style="min-height:100vh;background:var(--color-bg);color:var(--color-text);transition:background .2s ease,color .2s ease">
+
+  <div>
+    <nav class="nav">
+      <span class="nav-brand">locked<span style="color:var(--color-accent)">.in</span></span>
+      <div style="position:relative;margin-left:auto">
+        <div class="av" style="width:36px;height:36px;font-size:14px;cursor:pointer" title="Account &amp; preferences" onclick="toggleMenu()">S</div>
+        <div id="menu-backdrop" style="display:none;position:fixed;inset:0;z-index:40" onclick="closeMenu()"></div>
+        <div id="menu-dropdown" style="display:none;position:absolute;top:calc(100% + 10px);right:0;z-index:41;width:264px;background:var(--color-surface);border:2px solid var(--color-divider);box-shadow:var(--shadow-lg);padding:16px">
+          <div style="display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:2px solid var(--color-divider);margin-bottom:14px">
+            <div class="av" style="width:40px;height:40px;font-size:15px">S</div>
+            <div style="min-width:0">
+              <div style="font-family:var(--font-heading);font-weight:800;font-size:14px">sam_runs</div>
+              <div class="text-muted" style="font-size:12px;overflow:hidden;text-overflow:ellipsis">sam@email.com</div>
+            </div>
+          </div>
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--color-neutral-600);margin-bottom:6px">Distance units</div>
+          <div class="seg" style="width:100%;margin-bottom:5px">
+            <label class="seg-opt" style="flex:1;justify-content:flex-start"><input type="radio" name="unit" checked>km</label>
+            <label class="seg-opt" style="flex:1;justify-content:flex-start"><input type="radio" name="unit">mi</label>
+          </div>
+          <div class="text-muted" style="font-size:11px;margin-bottom:16px">Applies everywhere distances are shown.</div>
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--color-neutral-600);margin-bottom:6px">Appearance</div>
+          <div class="seg" id='theme-switcher' style="width:100%;margin-bottom:18px">
+            <label class="seg-opt" style="flex:1;justify-content:flex-start"><input type="radio" name="theme" value="light" checked>Light</label>
+            <label class="seg-opt" style="flex:1;justify-content:flex-start"><input type="radio" name="theme" value="dark">Dark</label>
+          </div>
+          <button class="btn btn-secondary btn-block" style="margin-top:0" onclick="location.href='settings.html'">Account settings</button>
+          <button class="btn btn-ghost btn-block" onclick="location.href='index.html'">Sign out</button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="page" style="max-width:960px;margin:0 auto;padding:36px 24px 60px">
+      <h1 style="margin-bottom:28px">Let's get it, Sam</h1>
+
+      <h6 style="margin-bottom:10px;color:var(--color-accent)">Ending soon</h6>
+      <div class="lift feat-card" style="border:2px solid var(--color-accent);background:var(--color-accent-100);padding:20px;display:flex;gap:24px;align-items:center;margin-bottom:36px;cursor:pointer" onclick="location.href='activity.html'">
+        <div class="feat-rank" style="flex:none;padding-right:24px;border-right:2px solid var(--color-accent)">
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:44px;line-height:.9;color:var(--color-accent)">4th</div>
+          <div class="text-muted" style="font-size:13px;margin-top:4px">of 24</div>
+        </div>
+        <div style="flex:1">
+          <h4 style="margin-bottom:6px">May Marathon Club</h4>
+          <div class="text-muted" style="font-size:14px;margin-bottom:8px">furthest distance · running · 24 friends</div>
+          <div style="font-size:14px"><span style="font-weight:700">2.3 km</span> <span class="text-muted">behind 3rd place</span></div>
+        </div>
+        <div class="feat-meta" style="flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:10px">
+          <span class="tag tag-outline">⏱ 3 days left</span>
+          <button class="btn btn-primary kbtn" onclick="location.href='activity.html'">Open →</button>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px">
+        <h6 style="margin:0">Your challenges</h6>
+      </div>
+      <div class="grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+        <div class="card lift elev-sm" style="cursor:pointer" onclick="location.href='activity.html'">
+          <div class="card-title">Row Hard June</div>
+          <div class="card-meta">rowing · 12 days left</div>
+          <div style="margin-top:6px"><span class="tag tag-neutral">4th of 8</span></div>
+        </div>
+        <div class="card lift elev-sm" style="cursor:pointer" onclick="location.href='activity.html'">
+          <div class="card-title">Sunrise 5K</div>
+          <div class="card-meta">running · 20 days left</div>
+          <div style="margin-top:6px"><span class="tag tag-accent">1st of 5</span></div>
+        </div>
+        <button class="lift" style="border:2px dashed var(--color-neutral-400);background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--color-accent);font-family:var(--font-heading);font-weight:800;font-size:15px;cursor:pointer;min-height:120px" onclick="openModal('add-activity-modal')">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+          Add activity
+        </button>
+      </div>
+
+      <h6 style="margin:36px 0 12px">Finished challenges</h6>
+      <div class="grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+        <div class="card lift elev-sm" style="opacity:.92;cursor:pointer" onclick="location.href='activity.html'">
+          <div class="card-title">Feb Rowathon</div>
+          <div class="card-meta">rowing · ended Feb 28</div>
+          <div style="margin-top:6px"><span class="tag" style="background:var(--color-accent);color:var(--color-bg);font-weight:700">1st of 18</span></div>
+        </div>
+        <div class="card lift elev-sm" style="opacity:.92;cursor:pointer" onclick="location.href='activity.html'">
+          <div class="card-title">March Miles</div>
+          <div class="card-meta">running · ended Mar 31</div>
+          <div style="margin-top:6px"><span class="tag tag-accent">4th of 24</span></div>
+        </div>
+        <div class="card lift elev-sm" style="opacity:.92;cursor:pointer" onclick="location.href='activity.html'">
+          <div class="card-title">Jan Kickoff</div>
+          <div class="card-meta">running · ended Jan 31</div>
+          <div style="margin-top:6px"><span class="tag tag-neutral">11th of 30</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ============ MODAL: ADD ACTIVITY ============ -->
+<div class="dialog-backdrop" id="add-activity-modal" style="display:none" onclick="closeModals()">
+  <div class="dialog" onclick="event.stopPropagation()">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div class="dialog-title">Add an activity</div>
+      <button class="btn btn-secondary btn-icon" onclick="closeModals()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <button class="lift" style="text-align:left;border:2px solid var(--color-divider);background:transparent;padding:16px;cursor:pointer" onclick="openModal('create-type-modal')">
+      <div style="font-family:var(--font-heading);font-weight:800;font-size:16px;margin-bottom:2px">Create a challenge</div>
+      <div class="text-muted" style="font-size:13px">Set the sport, timeframe and invite friends</div>
+    </button>
+    <button class="lift" style="text-align:left;border:2px solid var(--color-divider);background:transparent;padding:16px;cursor:pointer" onclick="openModal('join-modal')">
+      <div style="font-family:var(--font-heading);font-weight:800;font-size:16px;margin-bottom:2px">Join by code</div>
+      <div class="text-muted" style="font-size:13px">Enter a 6-digit code from a friend</div>
+    </button>
+  </div>
+</div>
+
+<!-- ============ CREATE: TYPE ============ -->
+<div class="dialog-backdrop" id="create-type-modal" style="display:none" onclick="closeModals()">
+  <div onclick="event.stopPropagation()" style="width:100%;max-width:460px;background:var(--color-surface);border:2px solid var(--color-divider);box-shadow:var(--shadow-lg);padding:34px 36px 36px">
+    <div style="display:flex;gap:6px;margin-bottom:22px">
+      <div style="flex:1;height:4px;background:var(--color-accent)"></div>
+      <div style="flex:1;height:4px;background:var(--color-neutral-300)"></div>
+      <div style="flex:1;height:4px;background:var(--color-neutral-300)"></div>
+    </div>
+    <div class="text-muted" style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">Step 1 of 3</div>
+    <h3 style="margin-bottom:2px">What kind of challenge?</h3>
+    <div class="text-muted" style="font-size:13px;margin-bottom:22px">Pick how winners are decided. More types coming soon.</div>
+
+    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:26px">
+      <div class="type-card sel">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" style="flex:none;margin-top:2px"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+        <div style="flex:1">
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:16px;margin-bottom:2px">Furthest Distance</div>
+          <div class="text-muted" style="font-size:13px">Whoever logs the most total distance by the deadline wins.</div>
+        </div>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2.5" style="flex:none;margin-top:2px"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <div class="type-card dis">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex:none;margin-top:2px"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        <div style="flex:1">
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:16px;margin-bottom:2px">Cumulative Goal</div>
+          <div class="text-muted" style="font-size:13px">Everyone races to hit a shared target together.</div>
+        </div>
+        <span class="tag tag-neutral" style="flex:none">Soon</span>
+      </div>
+      <div class="type-card dis">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex:none;margin-top:2px"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+        <div style="flex:1">
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:16px;margin-bottom:2px">Streak</div>
+          <div class="text-muted" style="font-size:13px">Keep your daily streak alive longer than anyone.</div>
+        </div>
+        <span class="tag tag-neutral" style="flex:none">Soon</span>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <button class="btn btn-ghost" onclick="closeModals()">Cancel</button>
+      <button class="btn btn-primary kbtn" onclick="openModal('create-setup-modal')">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CREATE: SETUP ============ -->
+<div class="dialog-backdrop" id="create-setup-modal" style="display:none" onclick="closeModals()">
+  <div onclick="event.stopPropagation()" style="width:100%;max-width:460px;background:var(--color-surface);border:2px solid var(--color-divider);box-shadow:var(--shadow-lg);padding:34px 36px 36px">
+    <div style="display:flex;gap:6px;margin-bottom:22px">
+      <div style="flex:1;height:4px;background:var(--color-accent)"></div>
+      <div style="flex:1;height:4px;background:var(--color-accent)"></div>
+      <div style="flex:1;height:4px;background:var(--color-neutral-300)"></div>
+    </div>
+    <div class="text-muted" style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">Step 2 of 3 · Furthest Distance</div>
+    <h3 style="margin-bottom:22px">Set the rules</h3>
+
+    <div class="field" style="margin-bottom:18px"><label>challenge name</label><input class="input" placeholder="e.g. May Marathon Club"></div>
+
+    <div class="field" style="margin-bottom:18px"><label>time period</label>
+      <select class="input">
+        <option>1 week</option>
+        <option>2 weeks</option>
+        <option selected>1 month</option>
+        <option>Custom dates…</option>
+      </select>
+    </div>
+
+    <div class="field" style="margin-bottom:18px"><label>proof photo</label>
+      <div class="seg" style="width:100%">
+        <label class="seg-opt" style="flex:1;justify-content:flex-start"><input type="radio" name="proof" checked>Required</label>
+        <label class="seg-opt" style="flex:1;justify-content:flex-start"><input type="radio" name="proof">Optional</label>
+      </div>
+    </div>
+
+    <div class="field" style="margin-bottom:26px"><label>allowed sports</label>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px">
+        <span class="tag sport-chip tag-accent" style="padding:8px 12px;font-size:13px">Running</span>
+        <span class="tag sport-chip tag-outline" style="padding:8px 12px;font-size:13px">Rowing</span>
+        <span class="tag sport-chip tag-outline" style="padding:8px 12px;font-size:13px">Cycling</span>
+        <span class="tag sport-chip tag-outline" style="padding:8px 12px;font-size:13px">Walking</span>
+        <span class="tag sport-chip tag-outline" style="padding:8px 12px;font-size:13px">Swimming</span>
+        <span class="tag sport-chip tag-outline" style="padding:8px 12px;font-size:13px">Hiking</span>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <button class="btn btn-ghost" onclick="openModal('create-type-modal')">← Back</button>
+      <button class="btn btn-primary kbtn" onclick="openModal('create-invite-modal')">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CREATE: INVITE ============ -->
+<div class="dialog-backdrop" id="create-invite-modal" style="display:none" onclick="closeModals()">
+  <div onclick="event.stopPropagation()" style="width:100%;max-width:460px;background:var(--color-surface);border:2px solid var(--color-divider);box-shadow:var(--shadow-lg);padding:34px 36px 36px">
+    <div style="display:flex;gap:6px;margin-bottom:22px">
+      <div style="flex:1;height:4px;background:var(--color-accent)"></div>
+      <div style="flex:1;height:4px;background:var(--color-accent)"></div>
+      <div style="flex:1;height:4px;background:var(--color-accent)"></div>
+    </div>
+    <div class="text-muted" style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">Step 3 of 3</div>
+    <h3 style="margin-bottom:2px">Invite your friends</h3>
+    <div class="text-muted" style="font-size:13px;margin-bottom:22px">Share this code, or send an invite link.</div>
+
+    <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--color-neutral-600);margin-bottom:6px">Join code</div>
+    <div class="codewrap" style="position:relative;border:2px solid var(--color-divider);background:var(--color-surface);padding:20px;display:flex;align-items:center;justify-content:center;margin-bottom:8px">
+      <div style="font-family:var(--font-heading);font-weight:800;font-size:36px;letter-spacing:.22em;padding-left:.22em">K7F2Q9</div>
+      <button class="copybtn btn btn-secondary btn-icon" title="Copy code" style="position:absolute;right:14px;top:50%;transform:translateY(-50%)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </div>
+    <div style="height:18px;margin-bottom:14px"></div>
+
+    <div style="display:flex;align-items:center;gap:12px;margin:6px 0 18px;color:var(--color-neutral-500)">
+      <div style="flex:1;height:1px;background:var(--color-divider)"></div><span style="font-size:12px">or share via</span><div style="flex:1;height:1px;background:var(--color-divider)"></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:26px">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+        <button class="share-btn" title="Instagram"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></button>
+        <span class="text-muted" style="font-size:11px">Instagram</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+        <button class="share-btn" title="Messages"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></button>
+        <span class="text-muted" style="font-size:11px">Messages</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+        <button class="share-btn" title="WhatsApp"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></button>
+        <span class="text-muted" style="font-size:11px">WhatsApp</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+        <button class="share-btn" title="Copy link"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+        <span class="text-muted" style="font-size:11px">Copy link</span>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <button class="btn btn-ghost" onclick="openModal('create-setup-modal')">← Back</button>
+      <button class="btn btn-primary kbtn" onclick="closeModals()">Go to dashboard →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ JOIN BY CODE ============ -->
+<div class="dialog-backdrop" id="join-modal" style="display:none" onclick="closeModals()">
+  <div onclick="event.stopPropagation()" style="width:100%;max-width:420px;background:var(--color-surface);border:2px solid var(--color-divider);box-shadow:var(--shadow-lg);padding:34px 36px 36px">
+    <h3 style="margin-bottom:2px">Enter join code</h3>
+    <div class="text-muted" style="font-size:13px;margin-bottom:26px">Ask a friend for their 6-character challenge code.</div>
+
+    <div style="display:flex;gap:8px;justify-content:space-between;margin-bottom:28px">
+      <input class="codebox" maxlength="1" autocomplete="off" autocapitalize="characters" inputmode="text">
+      <input class="codebox" maxlength="1" autocomplete="off" autocapitalize="characters" inputmode="text">
+      <input class="codebox" maxlength="1" autocomplete="off" autocapitalize="characters" inputmode="text">
+      <input class="codebox" maxlength="1" autocomplete="off" autocapitalize="characters" inputmode="text">
+      <input class="codebox" maxlength="1" autocomplete="off" autocapitalize="characters" inputmode="text">
+      <input class="codebox" maxlength="1" autocomplete="off" autocapitalize="characters" inputmode="text">
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <button class="btn btn-ghost" onclick="closeModals()">Cancel</button>
+      <button class="btn btn-primary kbtn" onclick="closeModals()">Join challenge →</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script src="app.js">
+</script>
+
+</body>
+</html>

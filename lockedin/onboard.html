@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div data-theme="light" style="min-height:100vh;background:var(--color-bg);color:var(--color-text);transition:background .2s ease,color .2s ease">
+  <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:clamp(16px,5vw,40px)">
+    <div style="width:100%;max-width:400px;background:var(--color-surface);border:2px solid var(--color-divider);padding:34px 36px 36px">
+      <div style="display:flex;gap:6px;margin-bottom:22px">
+        <div style="flex:1;height:4px;background:var(--color-accent)"></div>
+        <div style="flex:1;height:4px;background:var(--color-neutral-300)"></div>
+      </div>
+      <h3 style="margin-bottom:2px">Set up your profile</h3>
+      <div class="text-muted" style="font-size:13px;margin-bottom:24px">you can change this anytime</div>
+
+      <div style="display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:24px">
+        <div class="av imgph lift" style="width:96px;height:96px;font-size:34px;cursor:pointer">＋</div>
+      </div>
+
+      <div class="field" style="margin-bottom:26px"><label>screen name</label><input class="input" placeholder="e.g. sam_runs"></div>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <button class="btn btn-ghost" onclick="location.href='index.html'">← Back</button>
+        <button class="btn btn-primary kbtn" onclick="location.href='dashboard.html'">Enter locked.in →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js">
+</script>
+</body>
+</html>
